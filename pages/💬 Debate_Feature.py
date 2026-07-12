@@ -132,8 +132,14 @@ def get_text_chunks(text):
 
 # Function to get embeddings for each chunk
 def get_vector_store(chunks):
+    # Option 1: Google Generative AI Embeddings (Default)
     embeddings = GoogleGenerativeAIEmbeddings(
         model="models/embedding-001")  # type: ignore
+        
+    # Option 2: Hugging Face sentence-transformers (Alternative tested for local/offline run)
+    # from langchain_community.embeddings import HuggingFaceEmbeddings
+    # embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+    
     vector_store = FAISS.from_texts(chunks, embedding=embeddings)
     vector_store.save_local("faiss_index")
 
