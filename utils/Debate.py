@@ -8,6 +8,8 @@ from langchain.schema.messages import HumanMessage
 from langchain.schema import StrOutputParser
 from langchain.prompts import ChatPromptTemplate
 import re
+import os
+from os import getenv as env
 
 import firebase_admin
 from firebase_admin import credentials
